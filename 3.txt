@@ -1,0 +1,33 @@
+构成模型以及字段如下所示
+俱乐部：
+Clubs
+clubs_id   name    address  create_time
+
+棋手：
+Players
+players_id   name    home_address  sex age  rank members_id
+
+会员：
+Members
+members_id  clubs_id
+
+锦标赛
+Tournaments
+tournaments_id  name  sponsor_number sponsor start_time end_time clubs_id
+
+比赛
+Matches
+tournaments_id  players_id matches_count
+
+构建模型的解释：
+1、会员有很多俱乐部说明 俱乐部和会员之间是一对多关系 则会员表中建立外键clubs_id
+2、一个棋手有一个而且只有一个排名，则在棋手后面追加排名字段
+3、俱乐部可以举办许多锦标赛 说明俱乐部和锦标赛也是一对多  则在锦标赛中建立外键clubs_id
+4、锦标赛可由其他组织赞助则把赞助商的名字记录在当前表中即可
+5、每年有许多锦标赛
+6、棋手可以参加多次锦标赛 与 一个锦标赛有多个棋手则说明  棋手与锦标赛是多对多的关系 在比赛表中分辨建立锦标赛和棋手的外键
+7、一个棋手只是一个俱乐部会员则说明 因为会员是俱乐部的外键则直接在棋手中添加会员的外键即可
+8、最后一条记录比赛的次数
+
+
+
